@@ -14,7 +14,10 @@ function Task(discription){
 }
 
 function createTemplate(messages, i){
-    return `<li>${messages.discription}</li>`
+    return `<li class="list__item">
+                <div class="item__discription">${messages.discription}</div>
+                <input type="checkbox" class="item__completed">
+           </li>`
 }
 
 function filmHtmlTask(){
