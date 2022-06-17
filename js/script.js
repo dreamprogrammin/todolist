@@ -13,10 +13,22 @@ function Task(discription){
     this.completed = false
 }
 
+function dltItem (i){
+    listReestr.splice(i , 1)
+    updateLocal()
+    filmHtmlTask()
+    console.log(i)
+}
+
 function createTemplate(messages, i){
     return `<li class="list__item">
                 <div class="item__discription">${messages.discription}</div>
-                <input type="checkbox" class="item__completed">
+                <div class="item__button">
+                    <input type="checkbox" class="item__completed">
+                    <button class="delete__button" onclick="dltItem(${i})">
+                        <img class="icon" src="./img/icon/free-icon-font-trash-3917378.svg" alt="icon,delete">
+                    </button>
+                </div>
            </li>`
 }
 
