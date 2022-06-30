@@ -34,6 +34,24 @@
     background-color: aqua;
 }
 
+.add__button{
+    padding: 7px;
+    background-color: #1f75fe;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    transition: .3s ease-in-out;
+}
+
+.add__button:active {
+    padding: 2px;
+}
+
+.input {
+    padding: 5px;
+}
+
 .input__form{}
 
 .list {

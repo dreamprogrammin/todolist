@@ -1,13 +1,19 @@
 const input = document.querySelector('#input'), 
       list = document.querySelector('#list'),
-      addBtn = document.querySelector('#add-button')
+      addBtn = document.querySelector('#add-button'),
+      listComleted = document.querySelector('#list-completed')
 
 let listReestr  
 
 let listItems = []
+let listReestrCompleted;
+
 
 !localStorage.listReestr ? listReestr = [] : listReestr = JSON.parse(localStorage.getItem('listReestr'))
+!localStorage.listReestrCompleted ? listReestrCompleted = [] : listReestrCompleted = JSON.parse(localStorage.getItem('listReestrCompleted'))
+
 filmHtmlTask()
+createHtmlCompleted()
 
 addBtn.addEventListener('click', formTask)
 
@@ -38,6 +44,7 @@ function createTemplate(messages, i){
            </li>`
 }
 
+
 function filmHtmlTask(){
     list.innerHTML = ''
     if(listReestr.length > 0){
@@ -48,20 +55,38 @@ function filmHtmlTask(){
     }
 }
 
+function createHtmlCompleted (){
+    listComleted.innerHTML = ''
+    if(listReestrCompleted.length > 0) {
+        listReestrCompleted.forEach((element, index) =>{
+            listComleted.innerHTML += createTemplate(element, index)
+        })
+    }
+} 
+
 function completedItem (i){
     listReestr[i].completed = !listReestr[i].completed
     if (listReestr[i].completed) {
         listItems[i].classList.add('checked')
+        listReestrCompleted.push(listReestr[i])
+            setTimeout(() => {
+                listReestr.splice(i , 1)
+                filmHtmlTask()
+                updateLocal()
+                createHtmlCompleted()
+            }, 1000);
     } else {
         listItems[i].classList.remove('checked')
     }
-    updateLocal()
     filmHtmlTask()
+    updateLocal()
+    createHtmlCompleted()
 }
 
 
 function updateLocal(){
     localStorage.setItem('listReestr', JSON.stringify(listReestr))
+    localStorage.setItem('listReestrCompleted' , JSON.stringify(listReestrCompleted))
 }
 
 function formTask(){
