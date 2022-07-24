@@ -9,7 +9,7 @@
     <title>Список задач</title>
 </head>
 <body>
-    <i class="fi fi-rr-Trash"></i>
+    
     <div class="todo">
         <div class="container">
             <div class="todo__wrapper">
@@ -18,17 +18,17 @@
                     <h1>Список задач</h1>
 
                     <div class="input__form">
-                        <input class="input" id="input" type="text" placeholder="Введите название" autocomplete="off">
-                        <button class="add__button" id="add-button">Добавить</button>
+                        <div class="input__form-wrapper">
+                            <input class="input" id="input" type="text" placeholder="Введите название" autocomplete="off">
+                            <label class="label" for="input"></label>
+                        </div>
+                        <div class="button__wrapper">
+                            <button class="add__button" id="add-button">Добавить</button>
+                        </div>
                     </div>
                 </div>
 
-                <ul class="list" id="list"></ul>
-
-                <div class="completed">
-                    <h3>Завершенные задачи</h3>
-                    <ul class="list__completed" id="list-completed"></ul>
-                </div>
+                <ul class="list" id="list"></ul> 
     
             </div>
         </div>
